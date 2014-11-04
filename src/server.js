@@ -8,8 +8,8 @@ app.use(connect.query());
 app.use(connect.bodyParser());
 
 app.use(function(req, res) {
-	if(req.method != 'GET') {
-		res.end("Hello World!!")
+	if(req.method == 'POST') {
+		res.end(JSON.stringify(req.body));
 	}
 });
 

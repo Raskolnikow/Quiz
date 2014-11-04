@@ -1,17 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Quiz</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	<!--
+	<meta name="mobile-web-app-capable" content="yes">-->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
 	<script type="text/javascript" src="start.js"></script>
-
-	<body orientationchange="void(0)" onload="showtime()">
-	
-		<title>Quiz</title>
-
-		<p>Hello World!!</p>
-
-	</body>
-
 </head>
+
+<body>
+
+<button class="show-page-loading-msg" data-textonly="false" data-textvisible="false" data-msgtext="" data-inine="true"></button>
+
+<div data-role="page" id="main">
+	<div data-role="header">
+		<a href="#" class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-grid"></a>
+		<!--<span class="ui-li-count">12</span>-->
+		<a href="#" class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-power"></a>
+		<!--<a href="#" class="ui-btn ui-btn-icon-notext ui-btn-right ui-btn-inline ui-corner-all ui-btn-icon-right ui-icon-power"></a>-->
+		<span class="ui-title"></span>
+	</div>
+
+	<div role="main" class="ui-content">
+		<ul data-role="listview" data-count-theme="b" data-inset="true">
+			<li><a href="#new_card" data-transition="slide">Neue Karte<span class="ui-li-count">12</span></a></li>
+			<li><a href="#learn" data-transition="slide">Lernen</a></li>
+			<li><a href="#">Suchen</a></li>
+		</ul>
+	</div>
+
+	<div data-role="footer">
+		<h4>Quiz</h4>
+	</div>
+</div>
+
+<div data-role="page" id="new_card">
+	<div data-role="header">
+		<h1>Neue Karte</h1>
+		<a href="#main" data-direction="reverse" data-transition="slide" class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-back"></a>
+	</div>
+
+	<div role="main" class="ui-content">
+		<form>
+			<label for="frage">Frage:</label>
+			<textarea name="frage" id="frage"></textarea>
+			<label for="antwort">Antwort:</label>
+			<textarea rows="5" name="antwort" id="antwort"></textarea>
+			<input type="button" value="Speichern" onclick="sendData()">	
+		</form>
+	</div>
+
+	<div data-role="footer">
+		<h4>Quiz</h4>
+	</div>
+</div>
+
+<div data-role="page" id="learn">
+	<div data-role="header">
+		<h1>Lernen</h1>
+		<a href="#main" data-direction="reverse" data-transition="slide" class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-back"></a>
+	</div>
+
+	<div role="main" class="ui-content">
+		<ul data-role="listview" data-count-theme="b" data-inset="true">
+			<li><a href="#fach_1" data-transition="slide">Fach 1<span class="ui-li-count">12</span></a></li>
+			<li><a href="#fach_2" data-transition="slide">Fach 2<span class="ui-li-count">32</span></a></li>
+			<li><a href="#fach_3" data-transition="slide">Fach 3<span class="ui-li-count">102</span></a></li>
+			<li><a href="#fach_4" data-transition="slide">Fach 4<span class="ui-li-count">2</span></a></li>
+			<li><a href="#fach_5" data-transition="slide">Fach 5<span class="ui-li-count">0</span></a></li>
+		</ul>
+	</div>
+
+	<div data-role="footer">
+		<h4>Quiz</h4>
+	</div>
+</div>
+
+</body>
 </html>
