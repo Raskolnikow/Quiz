@@ -1,4 +1,11 @@
 var connect = require('connect');
+var DAO = require('./data_base.js');
+
+var dbConfig = {
+	uri: "http://127.0.0.1",
+	port: 5984,
+	database: "quiz_db",
+};
 
 var app = connect();
 
@@ -7,9 +14,43 @@ app.use(connect.static(__dirname + '/public'));
 app.use(connect.query());
 app.use(connect.bodyParser());
 
-app.use(function(req, res) {
+var dao = new DAO(dbConfig);
+
+app.use('/new', function(req, res, next) {
 	if(req.method == 'POST') {
-		res.end(JSON.stringify(req.body));
+		dao.newEntry(req.body);
+		//res.end(JSON.stringify(req.body));
+	}
+});
+
+app.use('/show_card', function(req, res, next) {
+	if(req.method == 'POST') {
+		dao.list(function(err, body) {
+			if(!err) {
+				var ar = [];
+				var r1 = {};
+
+				body.rows.forEach(function(doc) {
+					ar[ar.length] = doc.id;
+				})
+
+				//console.log(ar);
+				dao.getEntry(ar[3], function(err, result) {
+					if(!err) {
+						//console.log(result);
+						r1.frage = result.frage;
+						r1.antwort = result.antwort;
+
+						//console.log(r1);
+
+						res.writeHead(200, {'Content-Type': 'application/json'});
+						res.end(JSON.stringify({ frage: r1.frage, antwort: r1.antwort}));
+					}
+					else
+						console.log(err);
+				})
+			}
+		});
 	}
 });
 
