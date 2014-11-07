@@ -14,7 +14,9 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src="start.js"></script>
+
 </head>
 
 <body>
@@ -88,16 +90,27 @@
 <div data-role="page" id="fach_1">
 	<div data-role="header">
 		<h1>Fach 1</h1>
-		<a href="#learn" data-rel="back" data-transition="slide" class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-back"></a>
+		<a href="#learn" data-rel="back" data-transition="slide" class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-back" id="btn_back"></a>
 		<a href="#main" class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-home"></a>
 	</div>
 
-	<div data-role="main" class="ui-content" id="fach_1_content">
-		<p>Hier könnte die Frage und Antwort stehen.</p>
+	<div data-role="main" class="ui-content">
+		<div id="fach_1_frage" class="card"></div>
+		</p>
+		<div id="fach_1_antwort" class="card" style="display:none"></div>
+		</p></p>
+		<div>
+		<!--<a href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-carat-l">Back</a>-->
+		<a href="#" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-eye" id="btn_show">Show</a>
+		</div>
+		<div>
+		<!--<a href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-carat-l">Back</a>-->
+		<a href="#" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-carat-r" id="btn_next">Next</a>
+		</div>
 	</div>
 
 	<div data-role="footer">
-		<h4>Quiz</h4>
+		<h1>Footer</h1>
 	</div>
 </div>
 

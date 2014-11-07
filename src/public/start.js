@@ -39,8 +39,7 @@ $(document).on('click', "#ref_to_learn", function() {
 	}*/
 });
 
-
-$(document).on('click', '#list_fach', function(event) {
+function showCard(event) {
 	$.ajax({
 		url: "/show_card",
 
@@ -53,11 +52,10 @@ $(document).on('click', '#list_fach', function(event) {
 		dataType: "json",
 
 		success: function(json) {
-			var cnt = document.getElementById("fach_1_content");
-			cnt.innerHTML = "<label>Frage:</label>";
-			cnt.innerHTML += "<p>" + json.frage + "</p>";
-			cnt.innerHTML += "<label>Antwort:</label>";
-			cnt.innerHTML += "<p>" + json.antwort + "</p>";
+			var cnt_frage = document.getElementById("fach_1_frage");
+			var cnt_antwort = document.getElementById("fach_1_antwort");
+			cnt_frage.innerHTML = json.frage;
+			cnt_antwort.innerHTML = json.antwort;
 		},
 
 		error: function(xhr, status, errorThrown) {
@@ -68,4 +66,22 @@ $(document).on('click', '#list_fach', function(event) {
 
 		}
 	});
+}
+
+$(document).on('click', '#list_fach', showCard);
+
+$(document).on('click', '#btn_back', function(event) {
+	var cnt_antwort = document.getElementById("fach_1_antwort");
+	cnt_antwort.style.display = "none";
+});
+
+$(document).on('click', '#btn_show', function(event) {
+	var cnt_antwort = document.getElementById("fach_1_antwort");
+	cnt_antwort.style.display = "block";
+});
+
+$(document).on('click', '#btn_next', function(event) {
+	var cnt_antwort = document.getElementById("fach_1_antwort");
+	cnt_antwort.style.display = "none";
+	showCard();
 });

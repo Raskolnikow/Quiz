@@ -35,7 +35,8 @@ app.use('/show_card', function(req, res, next) {
 				})
 
 				//console.log(ar);
-				dao.getEntry(ar[3], function(err, result) {
+				var rand_card = Math.floor(Math.random() * ar.length);
+				dao.getEntry(ar[rand_card], function(err, result) {
 					if(!err) {
 						//console.log(result);
 						r1.frage = result.frage;
